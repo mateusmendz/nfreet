@@ -9,9 +9,11 @@ var bcrypt = require("bcrypt");
 var expressSession = require("express-session");
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
+var dotenv = require("dotenv");
+dotenv.config();
 var User = mongoose.model("User");
 
-mongoose.connect("mongodb://localhost:27017/nfreetdb");
+mongoose.connect("mongodb://" process.env.MONGO_USERNAME + ":" + process.env.MONGO_PASSWORD + "@localhost:27017/nfreetdb");
 
 var app = express();
 
@@ -26,8 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   expressSession({
-    secret:
-      "wdanhubsahdubvuiabdY3412ubhuagbweyub3huebh2buesadssxubshdub2313dhusbadhubjgujikudbubash",
+    secret: process.env.EXPRESS_SESSION_SECRET,
   })
 );
 app.use(passport.initialize());
