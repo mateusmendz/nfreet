@@ -18,7 +18,8 @@ mongoose.connect(
     process.env.MONGO_USERNAME +
     ":" +
     process.env.MONGO_PASSWORD +
-    "@localhost:27017/nfreetdb"
+    "@localhost:27017/nfreetdb",
+  { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
 var app = express();
