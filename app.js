@@ -13,7 +13,13 @@ var dotenv = require("dotenv");
 dotenv.config();
 var User = mongoose.model("User");
 
-mongoose.connect("mongodb://" process.env.MONGO_USERNAME + ":" + process.env.MONGO_PASSWORD + "@localhost:27017/nfreetdb");
+mongoose.connect(
+  "mongodb://" +
+    process.env.MONGO_USERNAME +
+    ":" +
+    process.env.MONGO_PASSWORD +
+    "@localhost:27017/nfreetdb"
+);
 
 var app = express();
 
